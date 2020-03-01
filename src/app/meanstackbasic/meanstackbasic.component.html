@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="jumbotron">
+        <h3 class="text-center">USER DETAILS</h3>
+        <button class="btn btn-primary" (click)="getdatas()">getUser</button>
+    </div>
+    <div *ngFor="let data of finaldatas">
+        {{data.name}}
+    </div>
+</div>
