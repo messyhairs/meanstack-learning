@@ -7,10 +7,10 @@ const errormessage = 'is already exist';
 formrouter.route('/add').post(function (req, res) {
     let formsdatas = new form_models(req.body);
     formsdatas.save().then(formsdatas => {
-        res.status(200).json({ message: 'datas added sucessfully' , formsdatas })
+        res.status(200).json({ message: 'datas added sucessfully' })
     })
         .catch(err => {
-            res.status(400).send('unable to add datas');
+            res.status(400).send(errormessage);
         });
 });
 module.exports = formrouter;

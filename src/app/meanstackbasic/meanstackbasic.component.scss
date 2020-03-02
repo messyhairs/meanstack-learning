@@ -1,0 +1,37 @@
+.main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh;
+    display: table;
+    color: black;
+
+    @media screen and (min-width: 768px) {
+        width: 50%;
+
+        .jumbotron {
+            padding: 6rem 4rem;
+        }
+    }
+
+}
+
+.jumbotron {
+    padding: 5rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+
+.content {
+    padding: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+        padding: 100px;
+    }
+}

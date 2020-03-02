@@ -3,7 +3,6 @@ const uniqueValidator = require('mongoose-unique-validator');
 const userschema = new mongoose.Schema({
     username: {
         type: String, lowercase: true,
-        unique: true,
         required: [true, "can't be blank"],
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
         index: true
