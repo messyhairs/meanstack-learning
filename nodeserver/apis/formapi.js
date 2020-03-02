@@ -10,7 +10,8 @@ formrouter.route('/add').post(function (req, res) {
         res.status(200).json({ message: 'datas added sucessfully' })
     })
         .catch(err => {
-            res.status(400).send(errormessage);
+
+            res.status(400).send('sorry unable to add datas');
         });
 });
 module.exports = formrouter;

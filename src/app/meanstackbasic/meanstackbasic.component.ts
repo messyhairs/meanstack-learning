@@ -31,7 +31,7 @@ export class MeanstackbasicComponent implements OnInit {
   ngOnInit(): void {
     this.userforms = this.formbuilder.group({
       username: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', Validators.email],
     });
   }
   public isMobile() {
