@@ -61,6 +61,7 @@ export class MeanstackbasicComponent implements OnInit {
     },
       err => {
         this.error = err.error;
+        console.log(this.error);
         this.toastr.errorToastr(this.error, 'Warning', {
           position: 'bottom-left'
         });
