@@ -1,6 +1,9 @@
 <router-outlet>
-    <div class="spinner-border" role="status" *ngIf="showLoader">
-        <span class="sr-only">Loading...</span>
-      </div>   
-       <app-meanstackbasic></app-meanstackbasic>
+  <div class="spinner-border" role="status" *ngIf="showLoader">
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="footbar fixed-top">
+  </div>
+  <div class="footbar fixed-bottom" [class.d-none]="status">
+  </div>
 </router-outlet>

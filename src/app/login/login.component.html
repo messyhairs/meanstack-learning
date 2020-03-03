@@ -1,0 +1,39 @@
+<div class="main">
+    <div class="content">
+        <div class="container">
+            <div class="jumbotron">
+                <form [formGroup]="userforms" novalidate>
+                    <div class="form-group">
+                        <label class="col-md-4" [class.text-left]="isMobilevar">Email</label>
+                        <input type="email" class="form-control mx-auto" [class.w-50]="!isMobilevar"
+                            formControlName="email" #email />
+                    </div>
+                    <div
+                        *ngIf="userforms.controls['email'].invalid && (userforms.controls['email'].dirty || userforms.controls['email'].touched)">
+                        <div *ngIf="userforms.controls['email'].errors.required" class="text-danger">
+                            Email is required.
+                        </div>
+                        <div *ngIf="email.errors?.email">
+                            Email is not valid.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4" [class.text-left]="isMobilevar">password</label>
+                        <input type="password" class="form-control mx-auto" [class.w-50]="!isMobilevar"
+                            formControlName="password" #password />
+                    </div>
+                    <div
+                        *ngIf="userforms.controls['password'].invalid && (userforms.controls['password'].dirty || userforms.controls['password'].touched)">
+                        <div *ngIf="userforms.controls['password'].errors.required" class="text-danger">
+                            password is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" [disabled]="userforms.pristine || userforms.invalid"
+                            class="btn btn-success" (click)="login()">Add Users</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

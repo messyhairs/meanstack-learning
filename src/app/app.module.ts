@@ -7,12 +7,19 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 import { AppComponent } from './app.component';
+import {AuthGuard} from './services/auth.guard';
 import { MeanstackbasicComponent } from './meanstackbasic/meanstackbasic.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MeanstackbasicComponent
+    MeanstackbasicComponent,
+    DashboardComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +31,7 @@ import { MeanstackbasicComponent } from './meanstackbasic/meanstackbasic.compone
     ToastrModule.forRoot(),
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
