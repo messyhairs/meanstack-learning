@@ -7,13 +7,16 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  userdetails: any;
+  arraydata: any = [];
 
   constructor(private service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
-logout() {
-  this.service.logout();
-  this.router.navigateByUrl('/');
-}
+  logout() {
+    this.service.logout();
+    this.router.navigateByUrl('/');
+  }
 }
