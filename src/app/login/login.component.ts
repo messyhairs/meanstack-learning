@@ -16,7 +16,8 @@ export class LoginComponent implements OnInit {
   error: any;
   returnUrl: string;
   public isMobilevar = false;
-  constructor(private router: ActivatedRoute,
+  constructor(private deviceService: DeviceDetectorService,
+              private router: ActivatedRoute,
               private services: AuthService,
               private formbuilder: FormBuilder,
               private toastr: ToastrManager,
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.email],
       password: ['', Validators.required]
     });
+    this.isMobile();
   }
   login() {
     this.services.login(this.userforms.value).subscribe(result => {
@@ -41,10 +43,12 @@ export class LoginComponent implements OnInit {
       err => {
         this.error = err.error;
         console.log(this.error);
-        this.toastr.errorToastr(this.error, 'Warning', {
+        this.toastr.errorToastr(this.error.message, 'Warning', {
           position: 'bottom-left'
         });
       });
   }
-
+  public isMobile() {
+    this.isMobilevar = this.deviceService.isMobile();
+  }
 }

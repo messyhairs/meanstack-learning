@@ -14,7 +14,8 @@ export class SignupComponent implements OnInit {
   userforms: FormGroup;
   error: any;
   public isMobilevar = false;
-  constructor(private router: Router, private services: AuthService, private formbuilder: FormBuilder, private toastr: ToastrManager) { }
+  constructor(private deviceService: DeviceDetectorService,
+              private router: Router, private services: AuthService, private formbuilder: FormBuilder, private toastr: ToastrManager) { }
 
   ngOnInit(): void {
     this.userforms = this.formbuilder.group({
@@ -22,6 +23,7 @@ export class SignupComponent implements OnInit {
       email: ['', Validators.email],
       password: ['', Validators.required]
     });
+    this.isMobile();
   }
   formsubmit() {
     this.services.cerateaccount(this.userforms.value).subscribe(result => {
@@ -39,5 +41,7 @@ export class SignupComponent implements OnInit {
         });
       });
   }
-
+  public isMobile() {
+    this.isMobilevar = this.deviceService.isMobile();
+  }
 }
