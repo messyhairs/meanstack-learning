@@ -13,7 +13,8 @@ export class DashboardComponent implements OnInit {
   constructor(private service: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-
+    this.userdetails = localStorage.getItem('currentUser');
+    this.arraydata.push(JSON.parse(this.userdetails));
   }
   logout() {
     this.service.logout();

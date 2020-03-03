@@ -17,9 +17,10 @@ router.post('/login', (req, res) => {
 		}
 		else {
 			if (user.validPassword(req.body.password)) {
-				return res.status(201).send({
-					message: "User Logged In"
-				});
+				// return res.status(201).send({
+				// 	message: "User Logged In"
+				// });
+				res.send(user);
 			}
 			else {
 				return res.status(400).send({
