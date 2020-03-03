@@ -35,8 +35,7 @@ export class SignupComponent implements OnInit {
     },
       err => {
         this.error = err.error;
-        console.log(this.error);
-        this.toastr.errorToastr(this.error, 'Warning', {
+        this.toastr.errorToastr(this.error.message, 'Warning', {
           position: 'bottom-left'
         });
       });
