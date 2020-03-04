@@ -1,1 +1,60 @@
-    <button class="btn mt-5 btn-primary" (click)="logout()">Logout</button>
+<div class="main">
+    <div class="content">
+        <div class="container">
+            <button class="btn mt-5 btn-primary" (click)="logout()">Logout</button>
+            <div class="jumbotron">
+                <form [formGroup]="userforms" novalidate>
+                    <div class="form-group">
+                        <input type="email" class="form-control mx-auto" [class.w-50]="!isMobilevar"
+                            formControlName="useremail" #useremail hidden/>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4" [class.text-left]="isMobilevar">mobilenumber</label>
+                        <input type="number" class="form-control mx-auto" [class.w-50]="!isMobilevar"
+                            formControlName="mobilenumber" #mobilenumber />
+                    </div>
+                    <div
+                        *ngIf="userforms.controls['mobilenumber'].invalid && (userforms.controls['mobilenumber'].dirty || userforms.controls['mobilenumber'].touched)">
+                        <div *ngIf="userforms.controls['mobilenumber'].errors.required" class="text-danger">
+                            mobilenumber is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4" [class.text-left]="isMobilevar">Gender</label>
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="radio" class="form-control" formControlName="gender" value="female"
+                                    #gender /> Female
+                            </div>
+                            <div class="col-6">
+                                <input type="radio" class="form-control" formControlName="gender" value="male"
+                                    #gender /> Male
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="userforms.controls['gender'].invalid && (userforms.controls['gender'].dirty || userforms.controls['mobilenumber'].touched)">
+                        <div *ngIf="userforms.controls['gender'].errors.required" class="text-danger">
+                            gender is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4" [class.text-left]="isMobilevar">dob</label>
+                        <input type="date" class="form-control mx-auto" [class.w-50]="!isMobilevar"
+                            formControlName="dob" #dob />
+                    </div>
+                    <div
+                        *ngIf="userforms.controls['dob'].invalid && (userforms.controls['dob'].dirty || userforms.controls['dob'].touched)">
+                        <div *ngIf="userforms.controls['dob'].errors.required" class="text-danger">
+                            dob is required.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" [disabled]="userforms.pristine || userforms.invalid"
+                            class="btn btn-success" (click)="moredetails()">add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
