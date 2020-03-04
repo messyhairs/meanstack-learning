@@ -20,10 +20,11 @@ export class DashboardComponent implements OnInit {
   error: any;
   public isMobilevar = false;
   useremail: any;
+  status = true;
 
   constructor(private loader: LoaderService,
-    private formbuilder: FormBuilder, private service: AuthService, private router: Router,
-    private deviceService: DeviceDetectorService, private services: BasicapisService,
+              private formbuilder: FormBuilder, private service: AuthService, private router: Router,
+              private deviceService: DeviceDetectorService, private services: BasicapisService,
   ) {
     this.isMobile();
   }
@@ -39,7 +40,8 @@ export class DashboardComponent implements OnInit {
       gender: ['', Validators.required],
       dob: ['', Validators.required],
       mobilenumber: ['', Validators.required],
-      useremail: [this.useremail]
+      useremail: [this.useremail],
+      status: [this.status]
     });
     console.log(this.useremail);
   }

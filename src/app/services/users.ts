@@ -7,4 +7,5 @@ export class Moredetails {
     mobilenumber: number;
     dob: Date;
     useremail: string;
+    status: boolean;
 }

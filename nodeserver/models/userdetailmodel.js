@@ -12,6 +12,9 @@ const userschema = new mongoose.Schema({
     },
     useremail: {
         type: String
+    },
+    status:{
+        type: Boolean
     }
 },
     {
