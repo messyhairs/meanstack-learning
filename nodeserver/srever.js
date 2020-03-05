@@ -6,6 +6,7 @@ const express = require('express'),
   config = require('./database/db');
 const formrouters = require('./apis/formapi');
 const logrouters = require('./apis/logapi');
+const userdatas = require('./apis/userdetailsapi');
 
 
 mongoose.Promise = global.Promise;
@@ -19,6 +20,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use('/users', formrouters);
 app.use('/log', logrouters);
+app.use('/log', userdatas);
 
 const port = process.env.PORT || 8080;
 

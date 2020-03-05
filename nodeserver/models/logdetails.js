@@ -12,6 +12,9 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    mobilenumber: {
+        type: Number,
+    },
     hash: String,
     salt: String
 });

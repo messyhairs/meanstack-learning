@@ -21,27 +21,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userdetails = localStorage.getItem('currentUser');
-    if (this.userdetails) {
-      this.arraydata.push(JSON.parse(this.userdetails));
-    }
-    if (this.router.url === '/') {
-      this.status = true;
-    }
-
-    this.loaderService.status.subscribe((val: boolean) => {
-      this.showLoader = val;
-    });
   }
-  logout() {
-    // this.service.logout();
-    localStorage.removeItem('currentUser');
-    this.router.navigateByUrl('/');
-  }
-  toggleShow() {
-
-    this.isShown = !this.isShown;
-
-  }
-
 }

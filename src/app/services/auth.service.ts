@@ -21,7 +21,6 @@ export class AuthService {
       .map(user => {
         if (user) {
           localStorage.setItem('currentUser', JSON.stringify(user));
-          console.log(localStorage.setItem('currentUser', JSON.stringify(user)));
         }
 
         return user;
