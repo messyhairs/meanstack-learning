@@ -1,14 +1,10 @@
-// Importing modules 
 const express = require('express');
 const router = express.Router();
-
-// Importing User Schema 
+const notifier = require('node-notifier');
 const User = require('../models/logdetails');
 
-// User login api 
 router.post('/login', (req, res) => {
 
-	// Find user with requested email 
 	User.findOne({ email: req.body.email }, function (err, user) {
 		if (user === null) {
 			return res.status(400).send({
@@ -56,6 +52,11 @@ router.post('/signup', (req, res, next) => {
 				}
 			});
 		}
+		if (res.status(201)) {
+			notifier.notify({
+				title: 'Howdy',
+				message: newUser.name
+			  });		}
 	});
 
 });
@@ -71,18 +72,14 @@ router.route('/userdetails').get(function (req, res) {
 	});
 });
 
-// Defined edit route
 router.route('/edit/:id').get(function (req, res) {
-	// let newUser = new User();
 	let id = req.params.id;
 	User.findById(id, function (err, newUser) {
 		res.json(newUser);
 	});
 });
 
-//  Defined update route
 router.route('/update/:id').post(function (req, res) {
-	// let newUser = new User();
 	User.findById(req.params.id, function (err, newUser) {
 		if (!newUser) {
 			res.send('error');
@@ -102,9 +99,7 @@ router.route('/update/:id').post(function (req, res) {
 	});
 });
 
-// Defined delete | remove | destroy route
 router.route('/delete/:id').get(function (req, res) {
-	// let newUser = new User();
 	User.findByIdAndRemove({ _id: req.params.id }, function (err, newUser) {
 		if (err) res.json(err);
 		else res.json('Successfully removed');
