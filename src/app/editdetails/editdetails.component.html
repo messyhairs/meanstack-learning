@@ -1,0 +1,35 @@
+<div class="main">
+    <div class="content">
+        <div class="container">
+            <div class="jumbotron">
+                <form [formGroup]="userforms" novalidate>
+                    <div class="form-group">
+                        <label class="col-md-4" [class.text-left]="isMobilevar">name</label>
+                        <input type="text" id="{{name}}"  [(ngModel)]="name" class="form-control mx-auto" [class.w-50]="!isMobilevar"
+                            formControlName="name" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4" [class.text-left]="isMobilevar">Email</label>
+                        <input type="email" class="form-control mx-auto" [class.w-50]="!isMobilevar"
+                            formControlName="email" id="{{email}}"  [(ngModel)]="email" readonly/>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4" [class.text-left]="isMobilevar">mobilenumber</label>
+                        <input type="number" class="form-control mx-auto" [class.w-50]="!isMobilevar"
+                            formControlName="mobilenumber" #mobilenumber />
+                    </div>
+                    <div
+                        *ngIf="userforms.controls['mobilenumber'].invalid && (userforms.controls['mobilenumber'].dirty || userforms.controls['mobilenumber'].touched)">
+                        <div *ngIf="userforms.controls['mobilenumber'].errors.required" class="text-danger">
+                            mobilenumber is required.
+                        </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <button type="submit" [disabled]="userforms.pristine || userforms.invalid"
+                            class="btn btn-success" (click)="formsubmit()">Add Users</button>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

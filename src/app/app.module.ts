@@ -12,6 +12,8 @@ import { MeanstackbasicComponent } from './meanstackbasic/meanstackbasic.compone
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { UserinfoComponent } from './userinfo/userinfo.component';
+import { EditdetailsComponent } from './editdetails/editdetails.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { SignupComponent } from './signup/signup.component';
     MeanstackbasicComponent,
     DashboardComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    UserinfoComponent,
+    EditdetailsComponent
   ],
   imports: [
     BrowserModule,

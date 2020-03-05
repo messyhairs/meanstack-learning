@@ -59,5 +59,56 @@ router.post('/signup', (req, res, next) => {
 	});
 
 });
+router.route('/userdetails').get(function (req, res) {
+	let newUser = new User();
+	newUser.find(function (err, newUser) {
+		if (err) {
+			console.log(err);
+		}
+		else {
+			res.json(newUseres);
+		}
+	});
+});
+
+// Defined edit route
+router.route('/edit/:id').get(function (req, res) {
+	// let newUser = new User();
+	let id = req.params.id;
+	User.findById(id, function (err, newUser) {
+		res.json(newUser);
+	});
+});
+
+//  Defined update route
+router.route('/update/:id').post(function (req, res) {
+	// let newUser = new User();
+	User.findById(req.params.id, function (err, next, newUser) {
+		if (!newUser)
+			return next(new Error('Could not load Document'));
+		else {
+			newUser.username = req.body.username;
+			newUser.email = req.body.email;
+			newUser.mobilenumber = req.body.mobilenumber;
+
+			newUser.save().then(newUser => {
+				res.json('Update complete');
+			})
+				.catch(err => {
+					res.status(400).send("unable to update the database");
+				});
+		}
+	});
+});
+
+// Defined delete | remove | destroy route
+router.route('/delete/:id').get(function (req, res) {
+	// let newUser = new User();
+	User.findByIdAndRemove({ _id: req.params.id }, function (err, newUser) {
+		if (err) res.json(err);
+		else res.json('Successfully removed');
+	});
+});
+
 
 module.exports = router; 

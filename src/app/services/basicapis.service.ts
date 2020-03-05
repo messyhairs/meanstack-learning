@@ -22,4 +22,14 @@ export class BasicapisService {
   addmoredetails(moredetails: Moredetails) {
     return this.http.post(this.BaseUrl1 + '/moredetails', moredetails);
   }
+  getuserinfo() {
+    return this.http.get(this.BaseUrl1 + '/userdetails');
+
+  }
+  edituserinfo(id) {
+    return this.http.get(this.BaseUrl1 + '/edit/' + id);
+  }
+  deleteBusiness(id) {
+    return this.http.get(this.BaseUrl1 + '/delete', id);
+  }
 }

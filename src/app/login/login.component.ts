@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         position: 'bottom-left',
       });
       // this.userforms.reset();
-      this.routes.navigate(['/dashboard']);
+      this.routes.navigate(['/userinformation']);
 
     },
       err => {

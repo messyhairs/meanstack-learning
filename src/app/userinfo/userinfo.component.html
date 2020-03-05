@@ -1,0 +1,7 @@
+<button class="btn mt-5 btn-primary" (click)="logout()">Logout</button>
+<div class="container">
+    <div *ngFor="let userinfos of arraydata">
+        <a [routerLink]="['edit', userinfos._id]">{{userinfos.name}}
+        </a>
+    </div>
+</div>
