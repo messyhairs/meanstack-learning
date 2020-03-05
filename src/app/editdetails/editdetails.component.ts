@@ -25,8 +25,8 @@ export class EditdetailsComponent implements OnInit {
   email: any;
 
   constructor(private loader: LoaderService, private route: ActivatedRoute,
-              private formbuilder: FormBuilder, private service: AuthService, private router: Router,
-              private deviceService: DeviceDetectorService, private services: BasicapisService,
+    private formbuilder: FormBuilder, private service: AuthService, private router: Router,
+    private deviceService: DeviceDetectorService, private services: BasicapisService,
   ) {
     this.isMobile();
   }
@@ -51,5 +51,10 @@ export class EditdetailsComponent implements OnInit {
   logout() {
     this.service.logout();
     this.router.navigateByUrl('/');
+  }
+  updateuser() {
+    this.route.params.subscribe(params => {
+      this.services.updateuser(this.userforms.value, params['id']);
+    });
   }
 }

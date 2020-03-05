@@ -32,4 +32,10 @@ export class BasicapisService {
   deleteBusiness(id) {
     return this.http.get(this.BaseUrl1 + '/delete', id);
   }
+  updateuser(users: Users ,  id) {
+    this
+      .http
+      .post(this.BaseUrl1 + '/update/' + id, users)
+      .subscribe(res => console.log('Done' , users));
+  }
 }

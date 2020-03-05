@@ -1,7 +1,7 @@
 export class Users {
     username: string;
     email: string;
-    mobile?: number;
+    mobile: number;
 }
 export class Moredetails {
     gender: string;

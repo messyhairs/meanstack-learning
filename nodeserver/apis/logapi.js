@@ -83,11 +83,12 @@ router.route('/edit/:id').get(function (req, res) {
 //  Defined update route
 router.route('/update/:id').post(function (req, res) {
 	// let newUser = new User();
-	User.findById(req.params.id, function (err, next, newUser) {
-		if (!newUser)
-			return next(new Error('Could not load Document'));
+	User.findById(req.params.id, function (err, newUser) {
+		if (!newUser) {
+			res.send('error');
+		}
 		else {
-			newUser.username = req.body.username;
+			newUser.name = req.body.name;
 			newUser.email = req.body.email;
 			newUser.mobilenumber = req.body.mobilenumber;
 
