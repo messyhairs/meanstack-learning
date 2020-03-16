@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const nodeMailer = require('nodemailer');
 const notifier = require('node-notifier');
 const User = require('../models/logdetails');
 
@@ -29,6 +30,7 @@ router.post('/login', (req, res) => {
 
 // User signup api 
 router.post('/signup', (req, res, next) => {
+	let story = 'user details added successfully';
 	let newUser = new User();
 	newUser.name = req.body.name,
 		newUser.email = req.body.email
@@ -46,6 +48,30 @@ router.post('/signup', (req, res, next) => {
 					});
 				}
 				else {
+					console.log(newUser.email);
+					let transporter = nodeMailer.createTransport({
+						host: 'smtp.gmail.com',
+						port: 465,
+						secure: true,
+						auth: {
+							user: 'your@gmail.com',
+							pass: 'yourpassword'
+						}
+					});
+					let mailOptions = {
+						from: '"Messy Codes" <userinterface18@gmail.com>', // sender address
+						to: newUser.email, // list of receivers
+						subject: story, // Subject line
+						text: req.body.body, // plain text body
+						html: '<img src="https://starsunfolded.com/wp-content/uploads/2016/02/Shirley-Setia.jpg">' // html body
+					};
+					transporter.sendMail(mailOptions, (error, info) => {
+						if (error) {
+							return console.log(error);
+						}
+						console.log('Message %s sent: %s', info.messageId, info.response);
+						res.render('index');
+					});
 					return res.status(201).send({
 						message: "User added successfully."
 					});
@@ -56,7 +82,8 @@ router.post('/signup', (req, res, next) => {
 			notifier.notify({
 				title: 'Howdy',
 				message: newUser.name
-			  });		}
+			});
+		}
 	});
 
 });
