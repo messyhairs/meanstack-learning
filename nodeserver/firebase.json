@@ -1,0 +1,17 @@
+{
+  "hosting": {
+  "public": "functions",
+    "rewrites":[{
+    	"source":"/get-timestamp",
+    	"function":"app"
+    },
+    {
+    	"source":"/welcome",
+    	"function":"app"
+    },
+     {
+    	"source":"/userdetails/user",
+    	"function":"app"
+    }]
+  }
+}
