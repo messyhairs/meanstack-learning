@@ -5,11 +5,15 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { EditdetailsComponent } from './editdetails/editdetails.component';
+import { ImageserverComponent } from './imageserver/imageserver.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
-    path: '', component: SignupComponent
+    path: 'signup', component: SignupComponent
+  },
+  {
+    path: '', component: ImageserverComponent
   },
   {
     path: 'login', component: LoginComponent
