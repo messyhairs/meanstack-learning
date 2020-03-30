@@ -12,6 +12,10 @@
      {
     	"source":"/userdetails/user",
     	"function":"app"
+    },
+     {
+    	"source":"/image/upload",
+    	"function":"app"
     }]
   }
 }
