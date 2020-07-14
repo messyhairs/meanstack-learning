@@ -21,6 +21,7 @@ app.use(cors());
 app.use('/users', formrouters);
 app.use('/log', logrouters);
 app.use('/log', userdatas);
+app.use(express.static("public"));
 
 const port = process.env.PORT || 8080;
 

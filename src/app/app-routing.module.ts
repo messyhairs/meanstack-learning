@@ -10,11 +10,11 @@ import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'signup', component: SignupComponent
+    path: '', component: SignupComponent
   },
-  {
-    path: '', component: ImageserverComponent
-  },
+  // {
+  //   path: '', component: ImageserverComponent
+  // },
   {
     path: 'login', component: LoginComponent
   },

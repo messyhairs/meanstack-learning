@@ -87,6 +87,7 @@ router.post('/signup', (req, res, next) => {
 	});
 
 });
+
 router.route('/userdetails').get(function (req, res) {
 	let newUser = new User();
 	newUser.find(function (err, newUser) {
